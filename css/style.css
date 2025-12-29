@@ -3,7 +3,150 @@
 @import url(font.css);
 @import url(reset.css);
 
+html {
+    font-size: 10px; /* 1rem = 10px */
+}
 body {
     font-family: 'Pretendard';
 }
+:root /* 모든 페이지라는 뜻. body라고 써도 됨 */ {
+    --maincolor1: #81ffa6;
+}
+.container {
+    max-width: 1520px; margin: 0 auto; padding: 0 50px; /* 반응형 때문에 만든 좌우 여백 */
+}
 
+header {
+    position: absolute; z-index: 2;
+    width: 100%;
+}
+header .container {}
+    header .container .topset {
+        display: flex;
+        margin-top: 2.88em; font-size: 1.8rem;
+    }
+        header .container .topset .ticket a {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 500; color: #fff;
+        }
+        header .container .topset h1 {
+            position: absolute; left: 50%; top: 42px; transform: translateX(-50%);
+    }
+        header .container .topset h1 a img {
+            width: 130px;
+        }
+    header .container nav {
+        display: flex; justify-content: space-between;
+        height: 50px; margin-top: 2.4em;
+        white-space: nowrap; /* 글자가 밑으로 안 떨어지게 */
+    }
+        header .container nav ul {
+            display: flex; gap: 4.687vw;
+        }
+            header .container nav ul li {
+                height: 100%;
+            }
+            header .container nav ul li a {
+                display: flex; align-items: center;
+                height: 100%; font-size: 2rem; font-weight: 500; color: #fff;
+            }
+            header .container nav ul.gnb2 {
+                gap: 2.6vw;
+                margin-left: 165px;
+            }
+            header .container nav ul.gnb2 li {
+
+            }
+            header .container nav ul.gnb2 li a {
+                font-size: 1.6rem; font-weight: 500; color: #fff;
+            }
+            header .container nav ul.gnb2 li a:hover {
+                color: var(--maincolor1); /* 지정한 변수를 불러옴 */
+                transition: 0.3s;
+            }
+
+#hero {
+    width: 100%; height: 100vh;
+}
+#hero video {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+
+/* 태블릿 */
+@media screen and (max-width: 1100px) {
+    html {
+        font-size: 9.5px; /* 1rem = 9.5px */
+    }
+    header nav .gnb {
+        justify-content: space-between;
+        width: 100%;
+    }
+    header nav .gnb2 {
+        position: absolute; top: 48px; right: 50px;
+    }
+}
+
+/* 모바일 */
+@media screen and (max-width: 780px) {
+    html {
+        font-size: 8px; /* 1rem = 8px */
+    }
+
+    header .hamburger {
+        position: absolute; right: 50px; top: 35px;
+        width: 40px; height: 40px; cursor: pointer;
+    }
+    header .hamburger span {
+        position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+        width: 22px; height: 2px; background: #fff; transition: 0.3s;
+    }
+    header .hamburger span::before,
+    header .hamburger span::after {
+        content: '';
+        position: absolute; left: 0;
+        width: 100%; height: 100%; background: #fff; transition: 0.3s;
+    }
+    header .hamburger span::before {top: -8px;}
+    header .hamburger span::after {top: 8px;}
+
+    header .hamburger.on span {
+        background: rgba(255, 255, 255, 0);
+    }
+    header .hamburger.on span::before {
+        transform: rotate(45deg); top: 50%;
+    }
+    header .hamburger.on span::after {
+        transform: rotate(135deg); top: 50%;
+    }
+
+    header .container nav {
+        position: fixed; left: 0; top: 0;
+        flex-direction: column; justify-content: start;
+        width: 100%; height: 100%; margin-top: 0;
+        display: none;
+        background: limegreen;
+    }
+    header .container nav ul.gnb {
+        flex-direction: column;
+        order: 2;
+    }
+        header .container nav .gnb li {
+            font-size: 2.5rem;
+        }
+        header .container nav .gnb li a {
+            justify-content: center;
+            padding: 10px 0;
+        }
+    header .container nav ul.gnb2 {
+        justify-content: center;
+        position: relative; right: 0; top: 0;
+        order: 1; margin-left: 0; margin-bottom: 50px; margin-top: 80px;
+    }
+        header .container nav ul.gnb2 li {
+            font-size: 2rem;
+        }
+        header .container nav ul.gnb2 li a {
+            display: block;
+            padding: 20px 0;
+        }
